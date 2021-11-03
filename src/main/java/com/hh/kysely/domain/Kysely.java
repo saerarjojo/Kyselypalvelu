@@ -1,6 +1,7 @@
 package com.hh.kysely.domain;
 
 import javax.persistence.*;
+import java.util.*;
 
 @Entity
 public class Kysely
@@ -9,15 +10,16 @@ public class Kysely
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
     private String title;
-    private String question;
+    private String[] questions;
+    private String squestions = "";
     
     public Kysely() {}
 
-	public Kysely(String title, String question) 
+	public Kysely(String title, String[] questions) 
 	{
 		super();
 		this.title = title;
-		this.question = question;	
+		this.questions = questions;	
 	}
 
 	public Long getId()
@@ -40,20 +42,21 @@ public class Kysely
 		this.title = title;
 	}
 
-	public String getQuestion()
+	public String[] getQuestions()
 	{
-		return question;
+		return questions;
 	}
 
-	public void setQuestion(String question)
+	public void setQuestions(String[] questions)
 	{
-		this.question = question;
+		this.questions = questions;
 	}
 	
 
 	@Override
 	public String toString()
 	{
-			return "Kysely [id=" + id + ", title=" + title + ", question=" + question + "]";
+		squestions = Arrays.toString(questions);
+		return "Kysely [id=" + id + ", title=" + title + ", questions=" + squestions + "]";
 	}
 }

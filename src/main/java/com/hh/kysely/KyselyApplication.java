@@ -27,8 +27,9 @@ public class KyselyApplication
 		{
 			log.info("save a couple of question");
 			
-			kRepo.save(new Kysely("Kysymys 1", "Kysymys???"));
-			kRepo.save(new Kysely("Kysymys 2", "Kysymys???"));	
+			String[] kysymykset = {"kysymys 1", "kysymys 2"};
+			
+			kRepo.save(new Kysely("Kysely 1", kysymykset));	
 			
 			log.info("fetch all questions");
 			for (Kysely kysely : kRepo.findAll())

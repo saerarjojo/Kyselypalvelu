@@ -6,22 +6,22 @@
     <link type="text/css"rel="stylesheet"href="css/bootstrap.min.css"th:href="@{css/bootstrap.min.css}"/>
 </head>
 <body>
-	<h1>Edit question</h1>
+	<h1>Muokkaa kyselyä</h1>
 	<div>
 		<form th:object="${question}" th:action="@{../save}" action="#" method="post">
 		
 			<input type="hidden" id="id" th:field="*{id}" />
 			
-		  	<label for="title">Title</label>
+		  	<label for="title">Aihe</label>
 			<input type="text" id="title" th:field="*{title}" />
 			<div style="clear: both; display: block; height: 10px;"></div>
 			
-		  	<label for="question">Question</label>
-			<input type="text" id="question" th:field="*{question}" />
+		  	<label for="question">Kysymykset</label>
+			<input type="text" id="question" th:field="*{questions}" />
 			<div style="clear: both; display: block; height: 10px;"></div>
 		  	
 			<div style="clear: both; display: block; height: 10px;"></div>
-			<input type="submit" value="Save" class="btn btn-success"></input>
+			<input type="submit" value="Tallenna" class="btn btn-success"></input>
 		</form>
 		
 	</div>
