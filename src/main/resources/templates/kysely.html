@@ -16,7 +16,7 @@
     	
     		<td th:text="${kysely.title}"></td>
     		<td th:text="${kysely.questions[0]}"></td>
-		<td th:text="${kysely.questions[1]}"></td>
+    		<td th:text="${kysely.questions[1]}"></td>
     		
     		<td><a th:href="@{/edit/{id}(id=${kysely.id})}" class="btn btn-warning">Muokkaa</a></td>   
 			<td><a th:href="@{/delete/{id}(id=${kysely.id})}" class="btn btn-danger">Poista</a></td>   
