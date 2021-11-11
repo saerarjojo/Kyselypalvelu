@@ -15,12 +15,15 @@
     	<tr th:each = "kysely : ${kysely}">
     	
     		<td th:text="${kysely.title}"></td>
-    		<td th:text="${kysely.questions[0]}"></td>
-    		<td th:text="${kysely.questions[1]}"></td>
+    		<td th:text="${kysely.kysymykset[0].kysymys}"></td>
+    		<td th:text="${kysely.kysymykset[1].kysymys}"></td>
+    		
+    	<!--	<td><a th:href="@{/edit/{id}(id=${kysely.kysymykset[0].kysely.kyselyid})}" class="btn btn-warning">Muokkaa</a></td>
+    		
     		
     		<td><a th:href="@{/edit/{id}(id=${kysely.id})}" class="btn btn-warning">Muokkaa</a></td>   
 			<td><a th:href="@{/delete/{id}(id=${kysely.id})}" class="btn btn-danger">Poista</a></td>   
-		
+		  -->
     	</tr>
      </table>
 	 <a href="/add" class="btn btn-success">Lisää</a>    	
