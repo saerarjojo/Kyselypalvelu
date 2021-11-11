@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import com.hh.kysely.domain.*;
 
+@CrossOrigin
 @Controller
 public class KyselyController
 {
