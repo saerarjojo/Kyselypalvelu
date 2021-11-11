@@ -14,7 +14,7 @@ public class Kysymys {
 	    @JoinColumn (name= "kyselyid")
 	    private Kysely kysely;
 		
-	    @OneToMany(cascade = CascadeType.ALL, mappedBy = "vastaus")
+	    @OneToMany(cascade = CascadeType.ALL, mappedBy = "kysymys")
 	    private List<Vastaus> vastaukset;
 	    
 	    public Kysymys () {}

@@ -5,16 +5,17 @@ import javax.persistence.*;
 @Entity
 public class Vastaus {
 
-
-		@Id
-	    @GeneratedValue(strategy=GenerationType.AUTO)
-		 private Long vastausid;
-		 private String vastaus;
-		    @ManyToOne
-		    @JoinColumn (name= "kysymysid")
-		    private Kysymys kysymys;
-			
-		    public Vastaus () {}
+	@Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+	 private Long vastausid;
+	 private String vastaus;
+	    
+	 	@ManyToOne
+	    @JoinColumn (name = "kysymysid")
+	    private Kysymys kysymys;
+	
+	
+	    	public Vastaus () {}
 		    
 		    public Vastaus(String vastaus, Kysymys kysymys) {
 				super();
@@ -45,7 +46,8 @@ public class Vastaus {
 			public void setKysymys(Kysymys kysymys) {
 				this.kysymys = kysymys;
 			}
-
+		    
+		    
 			@Override
 			public String toString() {
 				if (this.kysymys != null)
@@ -53,7 +55,4 @@ public class Vastaus {
 				else
 					return "Vastaus [vastausid=" + vastausid + ", vastaus=" + vastaus + "]";	
 			}
-		    
-		    
-		    
 }
