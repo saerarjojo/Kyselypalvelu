@@ -3,6 +3,8 @@ package com.hh.kysely.domain;
 import javax.persistence.*;
 import java.util.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 public class Kysely {
     @Id
@@ -11,6 +13,7 @@ public class Kysely {
     private String title;
     
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "kysely")
+    @JsonIgnoreProperties("kysely")
     private List<Kysymys> kysymykset;
   
     

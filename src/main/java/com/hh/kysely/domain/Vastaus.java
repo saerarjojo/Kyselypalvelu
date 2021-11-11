@@ -2,6 +2,8 @@ package com.hh.kysely.domain;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 public class Vastaus {
 
@@ -11,6 +13,7 @@ public class Vastaus {
 	 private String vastaus;
 	    
 	 	@ManyToOne
+	 	@JsonIgnoreProperties("vastaukset")
 	    @JoinColumn (name = "kysymysid")
 	    private Kysymys kysymys;
 	

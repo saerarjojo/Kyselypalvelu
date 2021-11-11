@@ -4,17 +4,23 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 public class Kysymys {
 	@Id
     @GeneratedValue(strategy=GenerationType.AUTO)
 	 private Long kysymysid;
 	 private String kysymys;
-	    @ManyToOne
+	    
+	 
+	 	@ManyToOne
+	 	@JsonIgnoreProperties ("kysymykset")
 	    @JoinColumn (name= "kyselyid")
 	    private Kysely kysely;
 		
 	    @OneToMany(cascade = CascadeType.ALL, mappedBy = "kysymys")
+	    @JsonIgnoreProperties ("kysymys")
 	    private List<Vastaus> vastaukset;
 	    
 	    public Kysymys () {}
