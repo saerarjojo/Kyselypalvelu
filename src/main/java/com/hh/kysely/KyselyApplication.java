@@ -31,6 +31,9 @@ public class KyselyApplication {
 			Kysymys kysymys1 = new Kysymys ("Minkä värinen on musta?", kysely1);
 			kysymRepo.save(kysymys1);
 			
+			Kysymys kysymys2 = new Kysymys ("Minkä värinen on sininen?", kysely1);
+			kysymRepo.save(kysymys2);
+			
 			Vastaus vastaus1 = new Vastaus ("musta", kysymys1);
 			vRepo.save(vastaus1);
 					
@@ -38,6 +41,11 @@ public class KyselyApplication {
 			for (Kysymys kysymys : kysymRepo.findAll())
 			{
 				log.info(kysymys.toString());
+			}
+			
+			for (Vastaus vastaus : vRepo.findAll())
+			{
+				log.info(vastaus.toString());
 			}
 			
 		};
