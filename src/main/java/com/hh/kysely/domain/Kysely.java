@@ -4,59 +4,51 @@ import javax.persistence.*;
 import java.util.*;
 
 @Entity
-public class Kysely
-{
+public class Kysely {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private Long id;
+    private Long kyselyid;
     private String title;
-    private String[] questions;
-    private String squestions = "";
+    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "kysely")
+    private List<Kysymys> kysymykset;
+  
     
     public Kysely() {}
 
-	public Kysely(String title, String[] questions) 
-	{
+	public Kysely(String title) {
 		super();
 		this.title = title;
-		this.questions = questions;	
 	}
 
-	public Long getId()
-	{
-		return id;
+	public Long getKyselyid() {
+		return kyselyid;
 	}
 
-	public void setId(Long id)
-	{
-		this.id = id;
+	public void setKyselyid(Long kyselyid) {
+		this.kyselyid = kyselyid;
 	}
 
-	public String getTitle()
-	{
+	public String getTitle() {
 		return title;
 	}
 
-	public void setTitle(String title)
-	{
+	public void setTitle(String title) {
 		this.title = title;
 	}
 
-	public String[] getQuestions()
-	{
-		return questions;
+	public List<Kysymys> getKysymykset() {
+		return kysymykset;
 	}
 
-	public void setQuestions(String[] questions)
-	{
-		this.questions = questions;
+	public void setKysymykset(List<Kysymys> kysymykset) {
+		this.kysymykset = kysymykset;
 	}
-	
 
 	@Override
 	public String toString()
 	{
-		squestions = Arrays.toString(questions);
-		return "Kysely [id=" + id + ", title=" + title + ", questions=" + squestions + "]";
+		
+		return "Kysely [kyselyid=" + kyselyid + ", title=" + title + "]";
 	}
 }

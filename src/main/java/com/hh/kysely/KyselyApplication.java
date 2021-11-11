@@ -11,8 +11,7 @@ import org.springframework.context.annotation.Bean;
 import com.hh.kysely.domain.*;
 
 @SpringBootApplication
-public class KyselyApplication 
-{
+public class KyselyApplication {
 	private static final Logger log = LoggerFactory.getLogger(KyselyApplication.class);
 
 	public static void main(String[] args) 
@@ -21,21 +20,26 @@ public class KyselyApplication
 	}
 	
 	@Bean
-	public CommandLineRunner kyselyDemo(KyselyRepo kRepo)
+	public CommandLineRunner kyselyDemo(KyselyRepo kRepo, KysymysRepo kysymRepo, VastausRepo vRepo)
 	{
-		return (args) -> 
-		{
+		return (args) -> {
 			log.info("save a couple of question");
 			
-			String[] kysymykset = {"kysymys 1", "kysymys 2"};
+			Kysely kysely1 = new Kysely ("Värit");
+			kRepo.save(kysely1);
 			
-			kRepo.save(new Kysely("Kysely 1", kysymykset));	
+			Kysymys kysymys1 = new Kysymys ("Minkä värinen on musta?", kysely1);
+			kysymRepo.save(kysymys1);
 			
+			Vastaus vastaus1 = new Vastaus ("musta", kysymys1);
+			vRepo.save(vastaus1);
+					
 			log.info("fetch all questions");
-			for (Kysely kysely : kRepo.findAll())
+			for (Kysymys kysymys : kysymRepo.findAll())
 			{
-				log.info(kysely.toString());
+				log.info(kysymys.toString());
 			}
+			
 		};
 	}
 }
