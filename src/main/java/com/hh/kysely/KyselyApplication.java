@@ -34,6 +34,9 @@ public class KyselyApplication {
 			Kysymys kysymys2 = new Kysymys ("Minkä värinen on sininen?", kysely1);
 			kysymRepo.save(kysymys2);
 			
+			Kysymys kysymys3 = new Kysymys ("Kymysys 3?", kysely1);
+			kysymRepo.save(kysymys3);
+			
 			Vastaus vastaus1 = new Vastaus ("musta", kysymys1);
 			vRepo.save(vastaus1);
 					
