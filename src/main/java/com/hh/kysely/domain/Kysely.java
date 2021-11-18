@@ -39,6 +39,7 @@ public class Kysely {
 	public void setTitle(String title) {
 		this.title = title;
 	}
+	
 
 	public List<Kysymys> getKysymykset() {
 		return kysymykset;

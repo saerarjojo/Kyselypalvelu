@@ -16,6 +16,9 @@ public class KyselyController
 {
 	@Autowired
 	private KyselyRepo repository; 
+	
+	@Autowired
+	private KysymysRepo kysymysrepository;
 		
 	// Show all
     @RequestMapping(value= {"/", "/kysely"})
@@ -33,20 +36,36 @@ public class KyselyController
     }    
 
 	// RESTful service to get by id
+//    @RequestMapping(value="/kysely/{id}", method = RequestMethod.GET)
+//    public @ResponseBody Optional<Kysely> findQuestionRest(@PathVariable("id") Long id)
+//    {	
+//    	return repository.findById(id);
+//    }    
+    
+    //Open a questionnaire
     @RequestMapping(value="/kysely/{id}", method = RequestMethod.GET)
-    public @ResponseBody Optional<Kysely> findQuestionRest(@PathVariable("id") Long id)
-    {	
-    	return repository.findById(id);
-    }    
+    public String kys(Model model)
+    {
+    	model.addAttribute("kysely", repository.findAll());
+    	return "questionnaire";
+    }
 
     // Add
     @RequestMapping(value = "/add")
-    public String addQuestion(Model model)
+    public String addQuestionnaire(Model model)
     {
     	model.addAttribute("kysely", new Kysely());
         return "add";
     }     
 
+    @RequestMapping(value = "/kysely/{id}/addquestion")
+    public String addQuestion(Model model)
+    {
+    	model.addAttribute("kysymys", new Kysymys());
+    	return "addquestion";
+    }
+    
+    
     // Save
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public String save(Kysely kysely)
@@ -54,6 +73,14 @@ public class KyselyController
         repository.save(kysely);
         return "redirect:kysely";
     }    
+    
+    //Save question
+    @RequestMapping(value = "/kysely/{id}/savequestion", method = RequestMethod.POST)
+    public String saveQuestion(Kysymys kysymys)
+    {
+    	kysymysrepository.save(kysymys);
+    	return "redirect:/kysely/{id}";
+    }
 
     // Delete
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)

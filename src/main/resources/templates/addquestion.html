@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Kysely palvelu</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link type="text/css"rel="stylesheet"href="css/bootstrap.min.css"th:href="@{css/bootstrap.min.css}"/>
+</head>
+<body>
+	<h1>Lisää kyselyyn kysymys</h1>
+	<div>
+		 <form th:object="${kysymys}" th:action="@{savequestion}" action="#" method="post">
+		  	
+		  	<label for="kysymys">Kysymykset:</label><br><br>  
+		  	
+  		  	Kysymys 1  
+  			<input type="text" id="kysymys" th:field="*{kysymys}" /> 
+  			<br><br>  
+				 
+			<input type="submit" value="Tallenna" class="btn btn-success"></input> 
+		</form>
+	</div>
+	<a href="/kysely/{id}" class="btn btn-success">Takaisin</a>
+</body>
+</html>
