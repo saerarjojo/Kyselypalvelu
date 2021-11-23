@@ -35,4 +35,4 @@ public class KysymysController {
 	    	return kysymysrepo.save(kysymys);
 	    }
 	
-} 
+}

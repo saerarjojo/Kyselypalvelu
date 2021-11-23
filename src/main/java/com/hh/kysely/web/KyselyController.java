@@ -18,11 +18,11 @@ public class KyselyController
 	private KyselyRepo repository; 
 		
 	// Show all
-    @RequestMapping(value= {"/", "/kysely"})
+    @RequestMapping(value= {"/", "/kyselyt"})
     public String kysely(Model model)
     {	
         model.addAttribute("kysely", repository.findAll());
-        return "kysely";
+        return "kyselyt";
     }
     
     // RESTful service to get all
@@ -32,8 +32,8 @@ public class KyselyController
         return (List<Kysely>) repository.findAll();
     }    
 
-	// RESTful service to get by id
-    @RequestMapping(value="/kysely/{id}", method = RequestMethod.GET)
+	 //RESTful service to get by id
+    @RequestMapping(value="/restkysely/{id}", method = RequestMethod.GET)
     public @ResponseBody Optional<Kysely> findQuestionRest(@PathVariable("id") Long id)
     {	
     	return repository.findById(id);
@@ -41,7 +41,7 @@ public class KyselyController
 
     // Add
     @RequestMapping(value = "/add")
-    public String addQuestion(Model model)
+    public String addKysely(Model model)
     {
     	model.addAttribute("kysely", new Kysely());
         return "add";
@@ -52,7 +52,7 @@ public class KyselyController
     public String save(Kysely kysely)
     {
         repository.save(kysely);
-        return "redirect:kysely";
+        return "redirect:kyselyt";
     }    
 
     // Delete
@@ -69,6 +69,21 @@ public class KyselyController
     {
     	model.addAttribute("question", repository.findById(id));
     	return "edit";
+    }
+    
+  //Open a questionnaire
+    @RequestMapping(value="/kysely/{id}", method = RequestMethod.GET)
+    public String kys(Model model)
+    {
+    	model.addAttribute("kysely", repository.findAll());
+    	return "kysely";
+    }
+    //add a question
+    @RequestMapping(value = "/kysely/{id}/addquestion")
+    public String addQuestion(Model model)
+    {
+    	model.addAttribute("kysymys", new Kysymys());
+    	return "addquestion";
     }
 
 }
