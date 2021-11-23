@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Kysely palvelu</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link type="text/css"rel="stylesheet"href="/css/bootstrap.min.css"th:href="@{/css/bootstrap.min.css}"/>
+</head>
+<body>
+	<h1>Kysely</h1>
+    <table class="table table-stripped">
+ 
+		<tr>
+		    <th>Kysymykset</th>
+	    </tr>  
+    	<tr th:each = "kysely : ${kysymykset}">
+    	
+    		
+    		<td th:text="${kysely.kysymykset[0].kysymys}"></td>
+    		
+
+		  
+    	</tr>
+     </table>
+	 <a href="/kysely/{id}/addquestion" class="btn btn-success">Lisää Kysymys</a> 
+	 <a href="../" >Takaisin</a>  	
+</body>
+</html>
