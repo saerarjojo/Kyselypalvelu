@@ -1,6 +1,7 @@
 package com.hh.kysely.web;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +22,15 @@ public class KysymysController {
 		return kysymysrepo.findAll();
 	}
 	
-	  @RequestMapping(method = RequestMethod.POST)
+	 @RequestMapping(value="/{id}", method = RequestMethod.GET)
+	    public @ResponseBody Optional<Kysymys> findKysymysRest(@PathVariable("id") Long id)
+	    {	
+	    	return kysymysrepo.findById(id);
+	    }
+	 
+	 
+
+	@RequestMapping(method = RequestMethod.POST)
 	    public @ResponseBody Kysymys saveKysymysRest(@RequestBody Kysymys kysymys) {	
 	    	return kysymysrepo.save(kysymys);
 	    }

@@ -1,9 +1,11 @@
 package com.hh.kysely.web;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,6 +25,12 @@ public class VastausController {
 	public List<Vastaus> haeVastaus () {
 		return vastausrepo.findAll();
 	}
+	
+	 @RequestMapping(value="/{id}", method = RequestMethod.GET)
+	    public @ResponseBody Optional<Vastaus> findVastausRest(@PathVariable("id") Long id)
+	    {	
+	    	return vastausrepo.findById(id);
+	    }    
 	
 	  @RequestMapping(method = RequestMethod.POST)
 	    public @ResponseBody Vastaus saveVastausRest(@RequestBody Vastaus vastaus) {	
