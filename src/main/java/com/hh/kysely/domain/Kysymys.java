@@ -23,6 +23,10 @@ public class Kysymys {
 	    @JsonIgnoreProperties ("kysymys")
 	    private List<Vastaus> vastaukset;
 	    
+	    @OneToOne (cascade = CascadeType.ALL)
+	    @JoinColumn (name = "tyyppi_id")
+	    private Tyyppi tyyppi;
+	    
 	    public Kysymys () {}
 
 		public Kysymys(String kysymys, Kysely kysely) {
@@ -62,6 +66,15 @@ public class Kysymys {
 
 		public void setVastaukset(List<Vastaus> vastaukset) {
 			this.vastaukset = vastaukset;
+		}
+		
+		
+		public Tyyppi getTyyppi() {
+			return tyyppi;
+		}
+
+		public void setTyyppi(Tyyppi tyyppi) {
+			this.tyyppi = tyyppi;
 		}
 
 		@Override
