@@ -12,7 +12,7 @@ import com.hh.kysely.domain.*;
 
 @CrossOrigin
 @RestController
-@RequestMapping(path= "/rest/kyselyt")
+@RequestMapping(path={"/", "/rest/kyselyt"})
 public class KyselyController
 {
 	@Autowired
@@ -50,7 +50,7 @@ public class KyselyController
     public String save(Kysely kysely)
     {
         repository.save(kysely);
-        return "redirect:kyselyt";
+        return "redirect: rest/kyselyt";
     }    
 
     // Delete
