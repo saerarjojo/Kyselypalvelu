@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import com.hh.kysely.domain.Kysymys;
@@ -28,8 +27,6 @@ public class KysymysController {
 	    {	
 	    	return kysymysrepo.findById(id);
 	    }
-	 
-	 
 
 	@RequestMapping(method = RequestMethod.POST)
 	    public Kysymys saveKysymysRest(Kysymys kysymys) {	

@@ -69,7 +69,7 @@ public class KyselyController
     	return "edit";
     }
     
-  //Open a questionnaire
+    //Avaa kysely
     @RequestMapping(value="/kysely/{id}", method = RequestMethod.GET)
     public String kys(Model model)
     {
@@ -77,7 +77,7 @@ public class KyselyController
     	return "kysely";
     }
     
-	//Lisää kysymys
+	//Lisää kysymys kyselyyn
     @RequestMapping(value = "/{id}/addquestion")
     public String addKysymys(Model model)
     {
