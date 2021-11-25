@@ -30,7 +30,7 @@ public class KyselyRestController {
     }    
     
     @RequestMapping(method = RequestMethod.POST)
-    public Kysely saveKyselyRest(Kysely kysely) {
+    public Kysely saveKyselyRest(@RequestBody Kysely kysely) {
     	return repository.save(kysely);
     }
 }
