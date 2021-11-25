@@ -34,7 +34,7 @@ public class KysymysController {
 	    }
 
 	@RequestMapping(method = RequestMethod.POST)
-	    public Kysymys saveKysymysRest(Kysymys kysymys) {	
+	    public Kysymys saveKysymysRest(@RequestBody Kysymys kysymys) {	
 	    	return kysymysrepo.save(kysymys);
 	    }
 	
