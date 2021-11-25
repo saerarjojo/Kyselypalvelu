@@ -4,40 +4,38 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import com.hh.kysely.domain.*;
 
 @CrossOrigin
-@Controller
+@RestController
+@RequestMapping(path= "/rest/kyselyt")
 public class KyselyController
 {
 	@Autowired
 	private KyselyRepo repository; 
 		
-	// Show all
-    @RequestMapping(value= {"/", "/kyselyt"})
-    public String kysely(Model model)
-    {	
-        model.addAttribute("kysely", repository.findAll());
-        return "kyselyt";
-    }
-    
     // RESTful service to get all
-    @RequestMapping(value="/questions", method = RequestMethod.GET)
-    public @ResponseBody List<Kysely> KyselyRepo()
+    @RequestMapping(method = RequestMethod.GET)
+    public List<Kysely> KyselyRepo()
     {	
-        return (List<Kysely>) repository.findAll();
+        return repository.findAll();
     }    
 
 	 //RESTful service to get by id
-    @RequestMapping(value="/restkysely/{id}", method = RequestMethod.GET)
-    public @ResponseBody Optional<Kysely> findQuestionRest(@PathVariable("id") Long id)
+    @RequestMapping(value="/{id}", method = RequestMethod.GET)
+    public Optional<Kysely> findQuestionRest(@PathVariable("id") Long id)
     {	
     	return repository.findById(id);
     }    
+    
+    @RequestMapping(method = RequestMethod.POST)
+    public Kysely saveKyselyRest(Kysely kysely) {
+    	return repository.save(kysely);
+    }
 
     // Add
     @RequestMapping(value = "/add")
@@ -78,12 +76,12 @@ public class KyselyController
     	model.addAttribute("kysely", repository.findAll());
     	return "kysely";
     }
-    //add a question
-    @RequestMapping(value = "/kysely/{id}/addquestion")
-    public String addQuestion(Model model)
+    
+	//Lisää kysymys
+    @RequestMapping(value = "/{id}/addquestion")
+    public String addKysymys(Model model)
     {
     	model.addAttribute("kysymys", new Kysymys());
     	return "addquestion";
     }
-
 }

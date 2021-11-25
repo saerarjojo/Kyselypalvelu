@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import com.hh.kysely.domain.Kysymys;
@@ -23,7 +24,7 @@ public class KysymysController {
 	}
 	
 	 @RequestMapping(value="/{id}", method = RequestMethod.GET)
-	    public @ResponseBody Optional<Kysymys> findKysymysRest(@PathVariable("id") Long id)
+	    public Optional<Kysymys> findKysymysRest(@PathVariable("id") Long id)
 	    {	
 	    	return kysymysrepo.findById(id);
 	    }
@@ -31,7 +32,7 @@ public class KysymysController {
 	 
 
 	@RequestMapping(method = RequestMethod.POST)
-	    public @ResponseBody Kysymys saveKysymysRest(@RequestBody Kysymys kysymys) {	
+	    public Kysymys saveKysymysRest(Kysymys kysymys) {	
 	    	return kysymysrepo.save(kysymys);
 	    }
 	
