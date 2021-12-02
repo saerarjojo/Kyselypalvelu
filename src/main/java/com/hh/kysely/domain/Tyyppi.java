@@ -1,6 +1,10 @@
 package com.hh.kysely.domain;
 
+import java.util.List;
+
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 public class Tyyppi {
@@ -9,17 +13,15 @@ public class Tyyppi {
 	private Long tyyppi_id;
 	private String tyyppi;
 		
-	@OneToOne
-	@MapsId
-	@JoinColumn (name = "kysymysid")
-	private Kysymys kysymys;
+	@OneToMany (cascade = CascadeType.ALL, mappedBy = "tyyppi")
+	@JsonIgnoreProperties ("tyyppi")
+	private List<Kysymys> kysymyksia;
 	
 	public Tyyppi() {}
 
-	public Tyyppi(String tyyppi, Kysymys kysymys) {
+	public Tyyppi(String tyyppi) {
 		super();
 		this.tyyppi = tyyppi;
-		this.kysymys = kysymys; 
 	}
 
 	public Long getTyyppi_id() {
@@ -38,19 +40,18 @@ public class Tyyppi {
 		this.tyyppi = tyyppi;
 	}
 
-	public Kysymys getKysymys() {
-		return kysymys;
+
+
+	public List<Kysymys> getKysymyksia() {
+		return kysymyksia;
 	}
 
-	public void setKysymys(Kysymys kysymys) {
-		this.kysymys = kysymys;
+	public void setKysymyksia(List<Kysymys> kysymyksia) {
+		this.kysymyksia = kysymyksia;
 	}
 
 	@Override
 	public String toString() {
-		if (this.kysymys!= null)
-			return "Tyyppi [tyyppi_id=" + tyyppi_id + ", tyyppi=" + tyyppi + ", kysymys=" + this.getKysymys() + "]";
-		else
 			return "Tyyppi [tyyppi_id=" + tyyppi_id + ", tyyppi=" + tyyppi + "]";
 	}
 	

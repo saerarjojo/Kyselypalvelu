@@ -20,13 +20,19 @@ public class KyselyApplication {
 	}
 	
 	@Bean
-	public CommandLineRunner kyselyDemo(KyselyRepo kRepo, KysymysRepo kysymRepo, VastausRepo vRepo)
+	public CommandLineRunner kyselyDemo(KyselyRepo kRepo, KysymysRepo kysymRepo, VastausRepo vRepo, TyyppiRepo trepo)
 	{
 		return (args) -> {
 			log.info("save a couple of question");
 			
 			Kysely kysely1 = new Kysely ("Värit");
 			kRepo.save(kysely1);
+			
+			Tyyppi tyyppi1 = new Tyyppi ("Normaali");
+			trepo.save(tyyppi1);
+			
+			Tyyppi tyyppi2 = new Tyyppi ("Monivalinta");
+			trepo.save(tyyppi2);
 			
 			Kysymys kysymys1 = new Kysymys ("Minkä värinen on musta?", kysely1);
 			kysymRepo.save(kysymys1);
@@ -40,7 +46,18 @@ public class KyselyApplication {
 			Vastaus vastaus1 = new Vastaus ("musta", kysymys1);
 			vRepo.save(vastaus1);
 					
-			log.info("fetch all questions");
+			log.info("fetch all");
+			for (Kysely kysely : kRepo.findAll())
+			{
+				log.info(kysely.toString());
+			}
+			
+			for (Tyyppi tyyppi : trepo.findAll())
+			{
+				log.info(tyyppi.toString());
+			}
+			
+			
 			for (Kysymys kysymys : kysymRepo.findAll())
 			{
 				log.info(kysymys.toString());

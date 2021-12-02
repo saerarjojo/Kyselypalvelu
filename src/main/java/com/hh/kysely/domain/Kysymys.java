@@ -23,7 +23,8 @@ public class Kysymys {
 	    @JsonIgnoreProperties ("kysymys")
 	    private List<Vastaus> vastaukset;
 	    
-	    @OneToOne (cascade = CascadeType.ALL)
+	    @ManyToOne
+	    @JsonIgnoreProperties ("kysymyksia")
 	    @JoinColumn (name = "tyyppi_id")
 	    private Tyyppi tyyppi;
 	    
