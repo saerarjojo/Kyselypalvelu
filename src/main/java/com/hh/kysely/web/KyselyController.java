@@ -19,7 +19,7 @@ public class KyselyController
     @RequestMapping(value= {"/", "/kyselyt"})
     public String kysely(Model model)
     {	
-        model.addAttribute("kysely", repository.findAll());
+        model.addAttribute("kyselyt", repository.findAll());
         return "kyselyt";
     }
     
@@ -58,17 +58,11 @@ public class KyselyController
     
   //Open a questionnaire
     @RequestMapping(value="/kysely/{id}", method = RequestMethod.GET)
-    public String kys(Model model)
+    public String kys(Model model, @PathVariable("id") Long id)
     {
-    	model.addAttribute("kysely", repository.findAll());
+    	model.addAttribute("kysely", repository.findById(id).get());
     	return "kysely";
     }
-    //add a question
-    @RequestMapping(value = "/kysely/{id}/addquestion")
-    public String addQuestion(Model model)
-    {
-    	model.addAttribute("kysymys", new Kysymys());
-    	return "addquestion";
-    }
+   
 
 }

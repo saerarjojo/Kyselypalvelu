@@ -9,7 +9,7 @@
 	<h1>Lisää kyselyyn kysymys</h1>
 	
 	<div>
-		 <form th:object="${kysymys}" th:action="@{save}" action="#" method="post">
+		 <form th:object="${kysymys}" th:action="@{/saveQuestion}" action="#" method="post">
 		  	
 		  	<label for="kysymys">Kysymykset:</label><br><br>  
 		  	
@@ -24,3 +24,5 @@
 	<a href="/kysely/{id}" >Takaisin</a>
 </body>
 </html>
+
+<!-- PIILOKENTTÄ JONNE KYSYMYS TALLENNETAAN -->
