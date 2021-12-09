@@ -12,10 +12,10 @@
 		<tr>
 		    <th>Kysymykset</th>
 	    </tr>  
-    	<tr th:each = "kysymys : ${kysely.kysymykset}">
+    	<tr th:each = "kysymysteksti : ${kysely.kysymykset}">
     	
     		
-    		<td th:text="${kysymys.kysymys}"></td>
+    		<td th:text="${kysymysteksti.kysymysteksti}"></td>
     		
 
 		  

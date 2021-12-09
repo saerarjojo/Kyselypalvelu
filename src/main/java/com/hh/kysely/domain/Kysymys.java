@@ -11,9 +11,9 @@ public class Kysymys {
 	@Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
 	 private Long kysymysid;
-	 private String kysymys;
+	 private String kysymysteksti;
 	 
-	 //muuta kysymys attribuutin nimi
+	 
 	    
 	 
 	 	@ManyToOne
@@ -32,9 +32,9 @@ public class Kysymys {
 	    
 	    public Kysymys () {}
 
-		public Kysymys(String kysymys, Kysely kysely) {
+		public Kysymys(String kysymysteksti, Kysely kysely) {
 			super();
-			this.kysymys = kysymys;
+			this.kysymysteksti = kysymysteksti;
 			this.kysely = kysely;
 		}
 
@@ -46,12 +46,13 @@ public class Kysymys {
 			this.kysymysid = kysymysid;
 		}
 
-		public String getKysymys() {
-			return kysymys;
+
+		public String getKysymysteksti() {
+			return kysymysteksti;
 		}
 
-		public void setKysymys(String kysymys) {
-			this.kysymys = kysymys;
+		public void setKysymysteksti(String kysymysteksti) {
+			this.kysymysteksti = kysymysteksti;
 		}
 
 		public Kysely getKysely() {
@@ -83,8 +84,8 @@ public class Kysymys {
 		@Override
 		public String toString() {
 			if (this.kysely != null)
-				return "Kysymys [kysymysid=" + kysymysid + ", kysymys=" + kysymys + ", kysely=" + this.getKysely() + "]";
+				return "Kysymys [kysymysid=" + kysymysid + ", kysymys=" + kysymysteksti + ", kysely=" + this.getKysely() + "]";
 			else 
-				return "Kysymys [kysymysid=" + kysymysid + ", kysymys=" + kysymys + "]";
+				return "Kysymys [kysymysid=" + kysymysid + ", kysymys=" + kysymysteksti + "]";
 		}
 }

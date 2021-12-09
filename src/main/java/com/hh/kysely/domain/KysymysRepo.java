@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface KysymysRepo extends JpaRepository<Kysymys, Long>
 	{	
-	List<Kysely> findByKysymys(String kysymys);
+	List<Kysely> findByKysymysteksti(String kysymysteksti);
 	}
 
 
