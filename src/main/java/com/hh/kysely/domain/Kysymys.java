@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Entity
 public class Kysymys {
 	@Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
 	 private Long kysymysid;
 	 private String kysymys;
 	    

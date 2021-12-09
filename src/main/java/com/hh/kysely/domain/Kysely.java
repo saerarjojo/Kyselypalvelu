@@ -8,7 +8,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Entity
 public class Kysely {
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long kyselyid;
     private String title;
     
