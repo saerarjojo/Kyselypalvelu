@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import com.hh.kysely.domain.Kysely;
 import com.hh.kysely.domain.Kysymys;
 import com.hh.kysely.domain.KysymysRepo;
 import com.hh.kysely.domain.Vastaus;
@@ -22,9 +23,21 @@ public class KysymysController {
 	
 	 //add a question
     @RequestMapping(value = "/kysely/{id}/addquestion")
-    public String addQuestion(Model model)
+    public String addQuestion(Model model, @PathVariable Long id)
     {
-    	model.addAttribute("kysymys", new Kysymys());
+    	System.out.println("kyselyn id " + id);
+    	//luo kyselyolio,
+    	Kysely kysely = new Kysely();
+    	//aseta kyselyoliolle parametrinä tullut kyselyid arvo
+    	kysely.setKyselyid(id);
+    	Kysymys kysymys = new Kysymys();
+    	kysymys.setKysely(kysely);
+    	model.addAttribute("kysymys", kysymys);
+    	
+    	
+    	
+    	//välitä kyselyolio modelin alle
+    	//model.addAttribute("kysely", kysely);
     	return "addquestion";
     }
     
@@ -34,6 +47,7 @@ public class KysymysController {
     	kysymysrepo.save(kysymys);
     	return "redirect:kyselyt";
     	//return "redirect:kysely/{id}"
+    	 
     }
 	
 	//Lisää vastaus kysymykseen

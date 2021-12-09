@@ -12,6 +12,8 @@ public class Kysymys {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
 	 private Long kysymysid;
 	 private String kysymys;
+	 
+	 //muuta kysymys attribuutin nimi
 	    
 	 
 	 	@ManyToOne

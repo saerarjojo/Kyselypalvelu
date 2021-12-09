@@ -6,15 +6,16 @@
     <link type="text/css"rel="stylesheet"href="/css/bootstrap.min.css"th:href="@{/css/bootstrap.min.css}"/>
 </head>
 <body>
-	<h1>Lisää kyselyyn kysymys</h1>
-	
+
+
 	<div>
-		 <form th:object="${kysymys}" th:action="@{/saveQuestion}" action="#" method="post">
+		 <form th:object="${kysymys}" th:action="@{/savequestion}" action="#" method="post">
 		  	
 		  	<label for="kysymys">Kysymykset:</label><br><br>  
 		  	
   		  	Kysymys 1  
-  			<input type="text" id="kysymys" th:field="*{kysymys}" /> 
+  			<input type="text" id="kysymys" th:field="*{kysymys}" />
+  			<input type="hidden" id="kyselyid" th:field="${kysymys.kysely.kyselyid}" th:value="${kysymys.kysely.kyselyid}" />
   			<br><br>  
 				 
 			<input type="submit" value="Tallenna" class="btn btn-success"></input> 
@@ -26,3 +27,4 @@
 </html>
 
 <!-- PIILOKENTTÄ JONNE KYSYMYS TALLENNETAAN -->
+ 
