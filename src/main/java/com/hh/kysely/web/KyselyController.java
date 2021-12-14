@@ -15,6 +15,12 @@ public class KyselyController
 	@Autowired
 	private KyselyRepo repository; 
 		
+	//resthome
+	@RequestMapping("/resthome")
+	public String resthome (Model model){
+		return "resthome";
+	}
+	
 	// Show all
     @RequestMapping(value= {"/", "/kyselyt"})
     public String kysely(Model model)
