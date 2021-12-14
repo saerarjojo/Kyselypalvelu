@@ -11,9 +11,9 @@
 	<div>
 		 <form th:object="${kysymys}" th:action="@{/savequestion}" action="#" method="post">
 		  	
-		  	<label for="kysymys">Kysymykset:</label><br><br>  
+		  	<label for="kysymys">Lisää uusi kysymys kyselyyn</label><br><br>  
 		  	
-  		  	Kysymys 1  
+  		  	Syötä kysymys: 
   			<input type="text" id="kysymys" th:field="*{kysymysteksti}" />
   			<input type="hidden" id="kyselyid" th:field="${kysymys.kysely.kyselyid}" th:value="${kysymys.kysely.kyselyid}" />
   			<br><br>  
@@ -22,7 +22,7 @@
 		</form>
 	</div>
 	<br>
-	<a href="/kysely/{id}" >Takaisin</a>
+	<a href="/.." >Takaisin</a>
 </body>
 </html>
 
