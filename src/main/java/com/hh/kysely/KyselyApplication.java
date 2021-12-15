@@ -40,8 +40,14 @@ public class KyselyApplication {
 			Kysymys kysymys2 = new Kysymys ("Minkä värinen on sininen?", kysely1);
 			kysymRepo.save(kysymys2);
 			
-			Kysymys kysymys3 = new Kysymys ("Kymysys 3?", kysely1);
+			Kysymys kysymys3 = new Kysymys ("Mikä on lempivärisi?", kysely1);
 			kysymRepo.save(kysymys3);
+			
+			Kysymys kysymys4 = new Kysymys ("Mikä on jouluinen väri?", kysely1);
+			kysymRepo.save(kysymys4);
+			
+			Kysymys kysymys5 = new Kysymys ("Mitkä ovat päävärit?", kysely1);
+			kysymRepo.save(kysymys5);
 			
 			Vastaus vastaus1 = new Vastaus ("musta", kysymys1);
 			vRepo.save(vastaus1);
